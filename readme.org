@@ -2,8 +2,17 @@
 * Information
 Program that hides or show a text in the least significant bits of the image.
 
-⚠️ For now the output of the document needs to be = .png
+⚠️ For now the output of the document needs to be `.png`
+
+Currently, there are two types of projects:
+1) [[https://github.com/JorgeGonzalezPascual/LSB_Steganography/blob/master/LSB_Steganography.py][LSB_Steganography.py]]
+2) [[https://github.com/JorgeGonzalezPascual/LSB_Steganography/blob/master/LSB_SteganographyKEY.py][LSB_SteganographyKEY.py]] (Key hiding)
 
 * Installation
 This tool requires its dependencies.
 : pip install -r requirements.txt
+
+* Pending tasks
++ LSB_SteganographyKEY.py is pending to hide and show the text with a key, for this, my idea is to change the sentinel and that is the key. If you can't find it: Wrong password or there is no message. If found: Correct password and displays the message.
++ Put parameters in the arguments to execute different options of the program.
++ Change the output image extension
