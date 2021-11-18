@@ -1,7 +1,6 @@
 from PIL import Image
 from colorama import Fore, Back, Style
 import math  # Utilizado sólo para redondear hacia abajo
-import os
 
 ENDING_CHARACTER = "11111111"
 
@@ -186,13 +185,11 @@ def main():
             texto = input("Texto a ocultar: ")
             imagen = input("Nombre de la imagen con extension: ")
             imagen_salida = extension(input("Nombre de la imagen de salida: "))
-            #path = path + "\\" + imagen
-            #imagen_salida = "hide"+imagen
+
             hide_text(texto, imagen, imagen_salida)
         elif opcion == 2:
             imagen = input("Nombre de la imagen con extension: ")
             print("")
-            #path = path + "\\" + imagen
             mensaje = show_text(imagen)
             if(mensaje != ""):
                 print("El mensaje oculto es:")

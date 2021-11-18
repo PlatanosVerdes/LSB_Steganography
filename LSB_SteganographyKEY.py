@@ -1,8 +1,8 @@
 from PIL import Image
 from colorama import Fore, Back, Style
 import math  # Utilizado sólo para redondear hacia abajo
-import os
-import docopt #Argumentos
+import os #Para obtener path
+import docopt #Args
 
 ENDING_CHARACTER = "11111111"
 
