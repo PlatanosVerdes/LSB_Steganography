@@ -2,7 +2,7 @@
 * Information
 Program that hides or show a text in the least significant bits of the image.
 
-⚠️ For now the output of the document needs to be _.png_
+⚠️ For now the output of the document needs to be = .png
 
 * Installation
 This tool requires its dependencies.
