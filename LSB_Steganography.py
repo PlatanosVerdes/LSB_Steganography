@@ -169,7 +169,6 @@ def main():
     texto = ""
     path = ""
     while not salir:
-        #path = os.path.abspath(os.getcwd())
         imagen = ""
         texto = ""
         print(Fore.BLUE + "- LSB - Steganography -")

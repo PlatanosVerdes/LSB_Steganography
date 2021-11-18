@@ -11,6 +11,8 @@ Currently, there are two types of projects:
 * Installation
 This tool requires its dependencies.
 : pip install -r requirements.txt
+or
+: pip3 install -r requirements.txt
 
 * Pending tasks
 + [[https://github.com/JorgeGonzalezPascual/LSB_Steganography/blob/master/LSB_SteganographyKEY.py][LSB_SteganographyKEY.py]] is pending to hide and show the text with a key, for this, my idea is to change the sentinel and that is the key. If you can't find it: Wrong password or there is no message. If found: Correct password and displays the message.

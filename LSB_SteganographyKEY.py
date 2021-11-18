@@ -20,28 +20,28 @@ def xor_bit(a,b):
 def oget_lsb(byte):
     return byte[-1]
 
-def get_bin(numero):
-    return bin(numero)[2:].zfill(8)
+def get_bin(number):
+    return bin(number)[2:].zfill(8)
 
-def converter_binario2decimal(binario):
-    return int(binario, 2)
+def converter_binary2decimal(binary):
+    return int(binary, 2)
 
-def converter_ascii2char(numero):
-    return chr(numero)
+def converter_ascii2char(number):
+    return chr(number)
 
 def get_ascii(caracter):
     return ord(caracter)
 
-def get_bits_list(texto,key):
-    lista = []
-    for letra in texto:
-        representacion_ascii = get_ascii(letra)
-        representacion_binaria = get_bin(representacion_ascii)
-        for bit in representacion_binaria:
-            lista.append(bit)
+def get_bits_list(text,key):
+    list = []
+    for character in text:
+        representation_ascii = get_ascii(character)
+        representation_binaria = get_bin(representation_ascii)
+        for bit in representation_binaria:
+            list.append(bit)
     for bit in key:
-        lista.append(bit)
-    return lista
+        list.append(bit)
+    return list
 
 def change_last_bit(byte, nuevo_bit):
     return byte[:-1] + str(nuevo_bit)
@@ -49,7 +49,7 @@ def change_last_bit(byte, nuevo_bit):
 def modify_color(color_original, bit):
     color_binario = get_bin(color_original)
     color_modificado = change_last_bit(color_binario, bit)
-    return converter_binario2decimal(color_modificado)
+    return converter_binary2decimal(color_modificado)
 
 
 def hide_text(mensaje, ruta_imagen_original, ruta_imagen_salida,key):
@@ -61,9 +61,9 @@ def hide_text(mensaje, ruta_imagen_original, ruta_imagen_salida,key):
     anchura = tamaño[0]
     altura = tamaño[1]
 
-    lista = get_bits_list(mensaje,key)
+    list = get_bits_list(mensaje,key)
     contador = 0
-    longitud = len(lista)
+    longitud = len(list)
     for x in range(anchura):
         for y in range(altura):
             if contador < longitud:
@@ -74,19 +74,19 @@ def hide_text(mensaje, ruta_imagen_original, ruta_imagen_salida,key):
                 azul = pixel[2]
 
                 if contador < longitud:
-                    rojo_modificado = modify_color(rojo, lista[contador])
+                    rojo_modificado = modify_color(rojo, list[contador])
                     contador += 1
                 else:
                     rojo_modificado = rojo
 
                 if contador < longitud:
-                    verde_modificado = modify_color(verde, lista[contador])
+                    verde_modificado = modify_color(verde, list[contador])
                     contador += 1
                 else:
                     verde_modificado = verde
 
                 if contador < longitud:
-                    azul_modificado = modify_color(azul, lista[contador])
+                    azul_modificado = modify_color(azul, list[contador])
                     contador += 1
                 else:
                     azul_modificado = azul
@@ -133,7 +133,7 @@ def show_text(ruta_imagen,key):
                 if byte == key:
                     break
                 mensaje += converter_ascii2char(
-                    converter_binario2decimal(byte))
+                    converter_binary2decimal(byte))
                 byte = ""
 
             byte += oget_lsb(get_bin(verde))
@@ -141,7 +141,7 @@ def show_text(ruta_imagen,key):
                 if byte == key:
                     break
                 mensaje += converter_ascii2char(
-                    converter_binario2decimal(byte))
+                    converter_binary2decimal(byte))
                 byte = ""
 
             byte += oget_lsb(get_bin(azul))
@@ -149,7 +149,7 @@ def show_text(ruta_imagen,key):
                 if byte == key:
                     break
                 mensaje += converter_ascii2char(
-                    converter_binario2decimal(byte))
+                    converter_binary2decimal(byte))
                 byte = ""
 
         else:
@@ -162,10 +162,10 @@ def ask_number():
     num = 0
     while(not correcto):
         try:
-            num = int(input("Introduce un numero entero: "))
+            num = int(input("Introduce un number entero: "))
             correcto = True
         except ValueError:
-            print(Fore.RED + "Error, introduce un numero entero")
+            print(Fore.RED + "Error, introduce un number entero")
         print(Style.RESET_ALL)
     return num
 
@@ -179,12 +179,12 @@ def extension(cadena):
 def main():
     salir = False
     opcion = 0
-    texto = ""
+    text = ""
     path = ""
     while not salir:
         #path = os.path.abspath(os.getcwd())
         imagen = ""
-        texto = ""
+        text = ""
         print(Fore.BLUE + "- LSB - Steganography -")
         print(Style.RESET_ALL)
         print("1. Ocultar mensaje")
@@ -195,7 +195,7 @@ def main():
         opcion = ask_number()
         if opcion == 1:
             key = ENDING_CHARACTER
-            texto = input("Texto a ocultar: ")
+            text = input("Texto a ocultar: ")
             imagen = input("Nombre de la imagen con extension: ")
             imagen_salida = extension(input("Nombre de la imagen de salida: "))
             new_key = to_bits(input("Clave: "))
@@ -204,7 +204,7 @@ def main():
             print(key)
             #path = path + "\\" + imagen
             #imagen_salida = "hide"+imagen
-            hide_text(texto, imagen, imagen_salida,key)
+            hide_text(text, imagen, imagen_salida,key)
         elif opcion == 2:
             key = ENDING_CHARACTER
             new_key = to_bits(input("Clave: "))
@@ -222,7 +222,7 @@ def main():
         elif opcion == 3:
             salir = True
         else:
-            print("Introduce un numero entre 1 y 3")
+            print("Introduce un number entre 1 y 3")
 
 
 if __name__ == "__main__":
